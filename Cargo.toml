@@ -1,0 +1,57 @@
+[package]
+name = "front"
+version = "0.1.1-beta.1"
+description = "Very Tiny Server Frontend"
+authors = ["Rogerio Araújo <rogerio.araujo@gmail.com>"]
+edition = "2024"
+repository = "https://github.com/vetis-server/front"
+homepage = "https://github.com/vetis-server/vetis"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+keywords = ["http", "development", "server", "frontend"]
+publish = true
+rust-version = "1.85.0"
+
+[dependencies]
+clap = { version = "4.5.61", features = [
+    "derive",
+    "std",
+], default-features = false }
+log = "0.4.34"
+logforth = { version = "0.30.1" }
+http = "1.4.2"
+serde = { version = "1.0.228", features = ["derive"] }
+time = { version = "0.3.55", features = ["macros", "formatting"] }
+tokio = { version = "1.53.1", features = [
+    "fs",
+    "signal",
+    "net",
+    "macros",
+    "rt-multi-thread",
+    "windows-sys",
+], default-features = false, optional = true }
+
+vetis = { path = "../vetis/vetis" }
+#vetis = { version = "0.1.7-beta.4", default-features = false }
+
+vetis-static = { path = "../vetis-extras/vetis-static", optional = true, features = [
+    "runtime-tokio",
+] }
+# vetis-static = { path = "../vetis-extras/vetis-static", optional = true, features = [
+#   "runtime-tokio",
+# ] }
+
+vetis-tokio = { path = "../vetis-tokio", features = ["http2", "http3"] }
+#vetis-tokio = { version = "0.1.2-beta.5" }
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

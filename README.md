@@ -1,5 +1,7 @@
 # front
 
+[![Crates.io downloads](https://img.shields.io/crates/d/front)](https://crates.io/crates/front) [![crates.io](https://img.shields.io/crates/v/front?style=flat-square)](https://crates.io/crates/front) [![Build Status](https://github.com/vetis-server/front/actions/workflows/rust.yml/badge.svg?event=push)](https://github.com/vetis-server/front/actions/workflows/rust.yml) ![Crates.io MSRV](https://img.shields.io/crates/msrv/front) [![Documentation](https://docs.rs/front/badge.svg)](https://docs.rs/front/latest/front) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vetis-server/front/blob/main/LICENSE.md)  [![codecov](https://codecov.io/gh/vetis-server/front/graph/badge.svg?token=T0HSBAPVSI)](https://codecov.io/gh/vetis-server/front)
+
 A very tiny frontend server built with Rust and the vetis framework.
 
 ## Description

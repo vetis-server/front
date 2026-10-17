@@ -12,6 +12,12 @@ keywords = ["http", "development", "server", "frontend"]
 publish = true
 rust-version = "1.85.0"
 
+[package.metadata.wix]
+upgrade-guid = "D633EDE8-6909-4F46-85B7-BBEF0B207F20"
+path-guid = "7B875E31-9BA7-47B9-A289-45CC87976B81"
+license = false
+eula = false
+
 [dependencies]
 clap = { version = "4.5.61", features = [
     "derive",

@@ -39,6 +39,10 @@ vetis-static = { version = "0.1.1-beta.3", features = [
 ] }
 vetis-tokio = { version = "0.1.2-beta.8", features = ["http2", "http3"] }
 
+[dev-dependencies]
+assert_cmd = "2.2.2"
+predicates = "3.1.4"
+
 [profile.release]
 strip = true
 opt-level = "z"

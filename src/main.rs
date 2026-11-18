@@ -10,7 +10,7 @@ use std::{
     net::{IpAddr, Ipv4Addr},
 };
 use vetis::{VetisServer, host::HostConfig};
-use vetis_static::{StaticPathConfig, tokio::StaticPath};
+use vetis_static::{StaticHookConfig, tokio::StaticHook};
 use vetis_tokio::{Vetis, host::Host};
 
 #[derive(Parser)]
@@ -91,7 +91,7 @@ impl Filter for TargetFilter {
 async fn main() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
 
-    let mut log = logforth::starter_log::builder()
+    logforth::starter_log::builder()
         .dispatch(|d| {
             d.filter(TargetFilter::new("vetis", Level::Info))
                 .append(append::Stdout::default())
@@ -112,9 +112,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .build()?;
 
     let mut virtual_host = Host::new(host_config).await?;
-    virtual_host.add_path(StaticPath::new(
-        StaticPathConfig::builder()
-            .uri("/")
+    virtual_host.add_hook(StaticHook::new(
+        StaticHookConfig::builder()
             .directory(root)
             .extensions("\\.(html|js|css|svg|png|ico|jsx|ts|tsx|json|mjs)$")
             .index_files(vec!["index.html".into()])

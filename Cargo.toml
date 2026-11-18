@@ -19,11 +19,11 @@ license = false
 eula = false
 
 [dependencies]
-clap = { version = "4.5.61", features = [
+clap = { version = "4.6.8", features = [
     "derive",
     "std",
 ], default-features = false }
-log = "0.4.34"
+log = "0.4.35"
 logforth = { version = "0.30.1", features = ["starter-log"] }
 tokio = { version = "1.53.3", features = [
     "fs",
@@ -33,11 +33,11 @@ tokio = { version = "1.53.3", features = [
     "rt-multi-thread",
     "windows-sys",
 ], default-features = false }
-vetis = { version = "0.1.7-beta.6" }
-vetis-static = { version = "0.1.1-beta.3", features = [
+vetis = { path = "../vetis/vetis" }
+vetis-static = { path = "../vetis-static", features = [
     "runtime-tokio",
 ] }
-vetis-tokio = { version = "0.1.2-beta.8", features = ["http2", "http3"] }
+vetis-tokio = { path = "../vetis-tokio", features = ["http2", "http3"] }
 
 [dev-dependencies]
 assert_cmd = "2.2.2"
